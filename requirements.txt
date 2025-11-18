@@ -1,0 +1,5 @@
+
+# requirements.txt
+# Dependencias necesarias para este proyecto
+pytest
+build

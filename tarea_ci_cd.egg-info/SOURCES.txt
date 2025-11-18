@@ -1,0 +1,8 @@
+README.md
+app.py
+pyproject.toml
+tarea_ci_cd.egg-info/PKG-INFO
+tarea_ci_cd.egg-info/SOURCES.txt
+tarea_ci_cd.egg-info/dependency_links.txt
+tarea_ci_cd.egg-info/top_level.txt
+tests/test_app.py

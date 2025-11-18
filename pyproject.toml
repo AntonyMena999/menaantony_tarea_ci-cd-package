@@ -1,0 +1,22 @@
+# pyproject.toml
+# --------------------------------------------------------
+# Archivo de configuración del package Python.
+# Permite construir .whl y .tar.gz usando:
+#   python -m build
+# --------------------------------------------------------
+
+[project]
+name = "tarea-ci-cd"
+version = "0.1.0"
+description = "Ejemplo detallado de CI/CD con Python"
+authors = [{name="Antony Mena"}]
+requires-python = ">=3.8"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "."
+]

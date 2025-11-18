@@ -1,0 +1,17 @@
+# Creado para proyecto Python + CI/CD
+
+# Entorno virtual
+venv/
+.venv/
+
+# Archivos generados por Python
+__pycache__/
+*.pyc
+
+# Archivos generados por build
+dist/
+build/
+*.egg-info/
+
+# Archivos temporales
+*.log
