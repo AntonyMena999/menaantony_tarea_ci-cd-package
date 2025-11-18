@@ -1,0 +1,13 @@
+# Entorno virtual
+venv/
+.venv/
+
+# Cachés y archivos temporales
+__pycache__/
+.pytest_cache/
+*.log
+
+# Build y paquetes
+dist/
+build/
+*.egg-info/
