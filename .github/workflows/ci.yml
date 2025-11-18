@@ -1,4 +1,3 @@
-
 # .github/workflows/ci.yml
 # --------------------------------------------------------
 # Archivo principal del pipeline CI/CD.
@@ -24,10 +23,10 @@ jobs:
 
     steps:
       - name: 📥 Checkout del repositorio
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # 🔄 actualizado
 
       - name: 🐍 Configurar versión de Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5   # 🔄 actualizado
         with:
           python-version: '3.10'
 
@@ -43,7 +42,7 @@ jobs:
         run: python -m build
 
       - name: 📤 Subir artefacto generado
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4   # 🔄 actualizado (v3 deprecado)
         with:
           name: package
           path: dist/
