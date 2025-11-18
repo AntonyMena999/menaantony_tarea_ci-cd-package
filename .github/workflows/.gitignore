@@ -1,0 +1,24 @@
+# Entornos virtuales
+venv/
+ENV/
+env/
+
+# Cachés de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pytest cache
+.pytest_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# VSCode
+.vscode/
+
+# Otros
+.DS_Store
