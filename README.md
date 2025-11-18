@@ -1,259 +1,221 @@
+# 🚀 CI/CD con Python + GitHub Actions
 
-🚀 CI/CD con Python + GitHub Actions
-📦 Construcción automática de Package + Pruebas + Artefactos
+### 📦 Construcción automática de Package + Pruebas + Artefactos
 
-Autor: Antony Mena — 2025
+**Autor:** Antony Mena --- 2025
 
-✨ Objetivo del Proyecto
+------------------------------------------------------------------------
 
-Este proyecto implementa un pipeline completo de CI/CD utilizando GitHub Actions, cumpliendo con:
+## ✨ Objetivo del Proyecto
 
-✅ Ejecución de pruebas unitarias
+Este proyecto implementa un pipeline completo de **CI/CD utilizando
+GitHub Actions**, cumpliendo con:
 
-✅ Construcción de un package Python
+-   ✅ Ejecución de pruebas unitarias\
+-   ✅ Construcción de un package Python\
+-   ✅ Generación de artefactos `.whl` y `.tar.gz`\
+-   ✅ Automatización completa del pipeline\
+-   ✅ Documentación clara para la rúbrica
 
-✅ Generación de artefactos .whl y .tar.gz
+------------------------------------------------------------------------
 
-✅ Automatización completa del pipeline
+## 📁 Estructura del Proyecto
 
-✅ Documentación clara para la rúbrica
+    tarea_ci_cd/
+    ├── app.py                  # Funciones principales
+    ├── pyproject.toml          # Configuración del package
+    ├── requirements.txt        # Dependencias
+    ├── README.md               # Documentación
+    ├── tests/
+    │   └── test_app.py         # Prueba unitaria
+    └── .github/
+        └── workflows/
+            └── ci.yml          # Pipeline CI/CD
 
-📁 Estructura del Proyecto
-tarea_ci_cd/
-├── app.py                 # Funciones principales del proyecto
-├── pyproject.toml         # Configuración del package y del build
-├── requirements.txt       # Dependencias del proyecto
-├── README.md              # Documentación del proyecto
-├── tests/
-│   └── test_app.py        # Prueba unitaria
-└── .github/
-    └── workflows/
-        └── ci.yml         # Pipeline CI/CD con GitHub Actions
+------------------------------------------------------------------------
 
-📄 Descripción detallada de cada archivo
+## 📄 Descripción detallada de cada archivo
 
-🟥 .github/workflows/ci.yml
+------------------------------------------------------------------------
 
-Archivo que define todo el pipeline de CI/CD utilizando GitHub Actions.
-Controla cada paso automático que ocurre cuando haces un push o pull request a main o master.
+# 🟥 `.github/workflows/ci.yml`
 
-# .github/workflows/ci.yml
-# --------------------------------------------------------
-# Archivo principal del pipeline CI/CD.
-# Ejecuta:
-#   1. Instalación de Python
-#   2. Instalación de dependencias
-#   3. Ejecución de pruebas
-#   4. Construcción del package
-#   5. Publicación de artefactos
-# --------------------------------------------------------
+Archivo que define todo el pipeline de CI/CD utilizando **GitHub
+Actions**.\
+Controla cada paso automático cuando haces *push* o *pull request* a
+`main` o `master`.
 
-name: CI/CD Python                     # Nombre del workflow
+### 📌 Contenido:
 
-on:
-  push:                                # Se ejecuta al hacer push
-    branches: [ "main", "master" ]
-  pull_request:                        # Se ejecuta en Pull Requests
-    branches: [ "main", "master" ]
+    name: CI/CD Python
 
-jobs:
-  build:
-    runs-on: ubuntu-latest             # Sistema operativo para ejecutar el pipeline
+    on:
+      push:
+        branches: [ "main", "master" ]
+      pull_request:
+        branches: [ "main", "master" ]
 
-    steps:
-      - name: 📥 Checkout del repositorio
-        uses: actions/checkout@v3      # Descarga el código del repositorio
+    jobs:
+      build:
+        runs-on: ubuntu-latest
 
-      - name: 🐍 Configurar versión de Python
-        uses: actions/setup-python@v4  
-        with:
-          python-version: '3.10'       # Versión de Python para el workflow
+        steps:
+        - name: 📥 Checkout del repositorio
+          uses: actions/checkout@v3
 
-      - name: 📦 Instalar dependencias
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest build     # Instala pruebas y herramientas de construcción
+        - name: 🐍 Configurar versión de Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.10'
 
-      - name: 🧪 Ejecutar pruebas
-        run: pytest                    # Ejecuta todas las pruebas unitarias
+        - name: 📦 Instalar dependencias
+          run: |
+            python -m pip install --upgrade pip
+            pip install pytest build
 
-      - name: 🧱 Construir package
-        run: python -m build           # Genera .whl y .tar.gz en /dist
+        - name: 🧪 Ejecutar pruebas
+          run: pytest
 
-      - name: 📤 Subir artefacto generado
-        uses: actions/upload-artifact@v3
-        with:
-          name: package                # Nombre del artefacto generado
-          path: dist/                  # Carpeta donde se guardan los archivos construidos
+        - name: 🧱 Construir package
+          run: python -m build
 
-¿Qué hace este archivo?
+        - name: 📤 Subir artefacto generado
+          uses: actions/upload-artifact@v3
+          with:
+            name: package
+            path: dist/
 
-Define el pipeline completo de CI/CD.
+### ✔ ¿Qué hace este archivo?
 
-Instala Python y las dependencias necesarias.
+-   Define el pipeline completo de CI/CD\
+-   Instala Python y dependencias\
+-   Ejecuta pruebas automáticamente\
+-   Construye el package\
+-   Genera artefactos `.whl` y `.tar.gz`\
+-   Permite descargarlos desde la pestaña **Actions** en GitHub
 
-Ejecuta las pruebas del proyecto automáticamente.
+Cumple con los puntos de la rúbrica: - ✔ CI/CD funcional\
+- ✔ Pruebas automatizadas\
+- ✔ Construcción del package\
+- ✔ Artefactos generados
 
-Construye el paquete usando python -m build.
+------------------------------------------------------------------------
 
-Genera y guarda los artefactos (.whl y .tar.gz).
+# 🟦 `app.py`
 
-Permite ver los artefactos en la sección “Actions” de GitHub.
+    def suma(a, b):
+        \"\"\"Retorna la suma de dos números.\"\"\"
+        return a + b
 
-Este archivo cumple con los puntos de la rúbrica:
+    if __name__ == "__main__":
+        print("Resultado de suma(2,3):", suma(2, 3))
 
-✔ Configuración CI/CD funcional
-✔ Pruebas automatizadas
-✔ Construcción del package
-✔ Artefactos generados correctamente
+Este archivo permite: - Probar directamente el programa\
+- Contener funciones para empaquetado\
+- Ejecutar pruebas unitarias
 
+------------------------------------------------------------------------
 
-🟦 app.py
+# 🟩 `pyproject.toml`
 
-Archivo principal del proyecto. Contiene la función que se usará en el package y en las pruebas.
+Archivo que configura el paquete Python y permite construirlo con:
 
-def suma(a, b):
-    """Retorna la suma de dos números."""
-    return a + b
+    python -m build
 
-if __name__ == "__main__":
-    print("Resultado de suma(2,3):", suma(2, 3))
+Contenido:
 
+    [project]
+    name = "tarea-ci-cd"
+    version = "0.1.0"
+    description = "Ejemplo detallado de CI/CD con Python"
+    authors = [{name="Antony Mena"}]
+    requires-python = ">=3.8"
 
-Este archivo permite:
+    [build-system]
+    requires = ["setuptools", "wheel"]
+    build-backend = "setuptools.build_meta"
 
-Probar directamente el programa.
+    [tool.pytest.ini_options]
+    pythonpath = [
+        "."
+    ]
 
-Tener funciones que serán empaquetadas.
+Este archivo es obligatorio para generar `.whl` y `.tar.gz`.
 
-Realizar pruebas unitarias.
+------------------------------------------------------------------------
 
-🟩 pyproject.toml
+# 🟨 `requirements.txt`
 
-Archivo que configura el paquete Python, define metadatos y permite construir los archivos .whl y .tar.gz mediante:
+Dependencias:
 
-python -m build
+    pytest
+    build
 
+Instalación:
 
-Contenido explicado:
+    pip install -r requirements.txt
 
-# pyproject.toml
-# --------------------------------------------------------
-# Archivo de configuración del package Python.
-# Permite construir .whl y .tar.gz usando:
-#   python -m build
-# --------------------------------------------------------
+------------------------------------------------------------------------
 
-[project]
-name = "tarea-ci-cd"                   # Nombre del package
-version = "0.1.0"                      # Versión del package
-description = "Ejemplo detallado de CI/CD con Python"
-authors = [{name="Antony Mena"}]       # Autor del proyecto
-requires-python = ">=3.8"              # Versión mínima de Python
+# 🟧 `tests/test_app.py`
 
-[build-system]
-requires = ["setuptools", "wheel"]     # Herramientas de construcción
-build-backend = "setuptools.build_meta" # Backend para crear artefactos
+    from app import suma
 
-[tool.pytest.ini_options]
-pythonpath = [
-    "."                                 # Permite que pytest importe app.py
-]
+    def test_suma():
+        assert suma(2, 3) == 5
 
+Prueba unitaria que valida la función principal.
 
-Este archivo es obligatorio para que python -m build funcione correctamente.
+------------------------------------------------------------------------
 
-🟨 requirements.txt
+# ⚙️ ¿Cómo funciona el CI/CD?
 
-Contiene las dependencias necesarias para pruebas y construcción:
+### 1️⃣ Haces un push o un pull request
 
-pytest
-build
+GitHub Actions detecta automáticamente los cambios.
 
+### 2️⃣ El pipeline ejecuta:
 
-Permite instalarlas con:
+-   `pytest` → Ejecuta pruebas\
+-   `python -m build` → Construye el package\
+-   `upload-artifact` → Sube los artefactos
 
-pip install -r requirements.txt
+### 3️⃣ Artefactos generados en `dist/`
 
-🟧 tests/test_app.py
+    tarea_ci_cd-0.1.0-py3-none-any.whl
+    tarea_ci_cd-0.1.0.tar.gz
 
-Prueba unitaria del proyecto:
+------------------------------------------------------------------------
 
-from app import suma
+# 🧪 Ejecutar pruebas localmente
 
-def test_suma():
-    assert suma(2, 3) == 5
-
-
-Valida que la función principal funciona correctamente.
-
-🟥 .github/workflows/ci.yml
-
-Archivo del pipeline de GitHub Actions.
-Automatiza todo el ciclo CI/CD:
-
-Descarga el repositorio
-
-Instala Python
-
-Instala dependencias
-
-Ejecuta pruebas
-
-Construye el package
-
-Guarda los artefactos generados
-
-Este archivo cumple estrictamente con el punto de la rúbrica sobre CI/CD.
-
-⚙️ ¿Cómo funciona el CI/CD?
-1️⃣ Realizas un push o un pull request
-
-Cada vez que subes algo al repositorio:
-
-2️⃣ GitHub Actions se ejecuta automáticamente
-
-Incluye estos pasos:
-
-pytest → ejecuta las pruebas
-
-python -m build → construye el package
-
-upload-artifact → sube los archivos de dist/
-
-3️⃣ Resultado final del pipeline
-
-En la sección Actions, se generarán estos artefactos:
-
-dist/
-  tarea_ci_cd-0.1.0-py3-none-any.whl
-  tarea_ci_cd-0.1.0.tar.gz
-
-🧪 Ejecutar pruebas localmente
-pytest
-
+    pytest
 
 Salida esperada:
 
-1 passed
+    1 passed
 
-🧱 Construir el package localmente
-python -m build
+------------------------------------------------------------------------
 
+# 🧱 Construir package localmente
 
-Esto generará la carpeta:
+    python -m build
 
-dist/
+Esto generará la carpeta `dist/`.
 
-📦 Instalar tu propio package (prueba final)
-pip install dist/*.whl
+------------------------------------------------------------------------
 
+# 📦 Instalar tu propio package
 
-Luego prueba:
+    pip install dist/*.whl
 
-from app import suma
-print(suma(10, 5))   # 15
+Probar:
 
-👤 Autor
+    from app import suma
+    print(suma(10, 5))
 
-Antony Mena – 2025
+------------------------------------------------------------------------
+
+# 👤 Autor
+
+**Antony Mena -- 2025**
